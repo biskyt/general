@@ -15,6 +15,8 @@ services:
     tty: true
     volumes:
       - "oe-db:/var/lib/mysql"
+      - "oe-protected-files:/protected/files"
+      - "oe-event-images:/protected/event_images"
     command:
       # Changing log_file_size to allow lightning image processing of larger document image events
       - "--innodb_log_file_size"
@@ -103,6 +105,7 @@ services:
     volumes:
       - "oe-web:/var/www/openeyes"
       - "oe-protected-files:/protected/files"
+      - "oe-event-images:/protected/event_images"
     depends_on:
      - "db"
 
@@ -245,6 +248,7 @@ volumes:
   oe-web:
   oe-db:
   oe-protected-files:
+  oe-event-images:
   connect-appdata:
   iolmaster_incoming:
 
