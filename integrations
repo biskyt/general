@@ -33,7 +33,7 @@ services:
       #   - "traefik.tcp.routers.${URL_HOST}-db.entrypoints=mysql"
   
   web:
-    image: "${WEBIMAGE:-toukanlabsdocker/oe-docker}:${WEBIMAGETAG:-latest}"
+    image: "${WEBIMAGE:-toukanlabsdocker/oe-web-dev}:${WEBIMAGETAG:-latest}"
     hostname: "{{.Task.Name}}_{{.Task.Slot}}"
     environment:
       BASICAUTH_USER: "${BASICAUTH_USER}"
@@ -192,7 +192,7 @@ services:
       - private
 
   payload_proc:
-    image: appertaopeneyes/payloadprocessor:${PAYLOAD_IMAGE_TAG:-latest}
+    image: toukanlabsdocker/payloadprocessor:${PAYLOAD_IMAGE_TAG:-latest}
     environment:
       TZ: "${TZ:-Europe/London}"
       DATABASE_HOST: db
